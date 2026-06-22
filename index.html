@@ -326,6 +326,18 @@
   .reset:hover{border-color:var(--rot);color:var(--rot)}
 
   @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  .en{display:block;font-family:var(--body);font-weight:500;font-size:12px;line-height:1.25;color:var(--tinte-weich);margin-top:2px;letter-spacing:0;text-transform:none}
+  .en-i{font-family:var(--body);font-weight:500;font-size:.8em;color:var(--tinte-weich);text-transform:none;letter-spacing:0}
+  .en2{display:block;font-family:var(--body);font-weight:500;font-size:10.5px;line-height:1.2;color:var(--tinte-weich);margin-top:1px;letter-spacing:0;text-transform:none}
+  .tab-en{display:block;font-family:var(--body);font-weight:600;font-size:9.5px;line-height:1.05;color:inherit;opacity:.7;text-transform:none;letter-spacing:.01em;margin-top:1px}
+  .cheat-link{font-family:var(--display);font-weight:800;font-size:12.5px;letter-spacing:.02em;text-decoration:none;color:var(--blau-tief);background:var(--gelb);padding:8px 13px;border-radius:8px;white-space:nowrap;transition:.15s;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+  .cheat-link:hover{filter:brightness(1.06);transform:translateY(-1px)}
+  nav .wrap{display:flex;align-items:center;gap:10px}
+  nav .tabs{flex:1;min-width:0}
+  .cheat-link{flex:none;display:flex;flex-direction:column;justify-content:center;font-family:var(--display);font-weight:800;font-size:12px;line-height:1.05;letter-spacing:.02em;text-decoration:none;color:var(--blau-tief);background:var(--gelb);padding:7px 12px;border-radius:8px;white-space:nowrap;transition:.15s}
+  .cheat-link span{font-family:var(--body);font-weight:600;font-size:9.5px;opacity:.82;text-transform:none;letter-spacing:0;margin-top:1px}
+  .cheat-link:hover{filter:brightness(.95)}
+  @media(max-width:520px){.cheat-link{font-size:11px;padding:6px 9px}}
 </style>
 </head>
 <body>
@@ -333,11 +345,11 @@
 <!-- ================= HEADER / DEPARTURE BOARD ================= -->
 <header>
   <div class="wrap board">
-    <div class="eyebrow">Route zur Prüfung · Goethe / telc B1</div>
+    <div class="eyebrow">Route to the exam · Goethe / telc B1</div>
     <div class="board-top">
       <div class="ziel">
         <span class="b1">B1</span>
-        <span class="datum">15.07.2026<small>Zielbahnhof</small></span>
+        <span class="datum">15.07.2026<small>Destination</small></span>
       </div>
       <div class="countdown">
         <div class="num" id="cdNum">–</div>
@@ -353,6 +365,7 @@
     <div class="heute">
       <span class="tag" id="heuteTag">TAG 1</span>
       <span class="ht" id="heuteText">Diagnose-Reparatur</span>
+      <a href="cheatsheet.html" class="cheat-link">📄 Spickzettel · Cheat sheet →</a>
       <div class="prog">
         <div class="meter"><i id="progMeter"></i></div>
         <span class="pct" id="progPct">0 %</span>
@@ -365,14 +378,15 @@
 <nav>
   <div class="wrap">
     <div class="tabs" role="tablist">
-      <button class="tab" role="tab" aria-selected="true" data-tab="uebersicht">Übersicht</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="plan">24-Tage-Plan</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="sprechen">Sprechen</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="schreiben">Schreiben</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="grammatik">Grammatik</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="quiz">Präpositions-Quiz</button>
-      <button class="tab" role="tab" aria-selected="false" data-tab="notfall">Notfallplan</button>
+      <button class="tab" role="tab" aria-selected="true" data-tab="uebersicht">Übersicht<span class="tab-en">Overview</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="plan">24-Tage-Plan<span class="tab-en">24-Day Plan</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="sprechen">Sprechen<span class="tab-en">Speaking</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="schreiben">Schreiben<span class="tab-en">Writing</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="grammatik">Grammatik<span class="tab-en">Grammar</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="quiz">Präpositions-Quiz<span class="tab-en">Preposition Quiz</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="notfall">Notfallplan<span class="tab-en">Emergency Plan</span></button>
     </div>
+    <a class="cheat-link" href="cheatsheet.html">📄 Spickzettel<span>Cheat sheet</span></a>
   </div>
 </nav>
 
@@ -380,11 +394,11 @@
 
 <!-- ============ ÜBERSICHT ============ -->
 <section class="panel active" id="uebersicht" role="tabpanel">
-  <div class="eyebrow2">Standortbestimmung</div>
-  <h2 class="sec">Wo du stehst — und worauf wir zielen</h2>
+  <div class="eyebrow2">Standortbestimmung · Where you stand</div>
+  <h2 class="sec">Wo du stehst — und worauf wir zielen<span class="en">Where you stand — and what we're aiming at</span></h2>
   <p class="lead">Dein Verstehen ist solides B1, teils B2. Punkte verlierst du nicht durch fehlendes Wissen, sondern durch <b>Produktion unter Druck</b>. Genau das trainiert diese Route.</p>
 
-  <h3 class="sub">Die 4 Lecks, die Punkte kosten</h3>
+  <h3 class="sub">Die 4 Lecks, die Punkte kosten<span class="en">The 4 leaks costing you points</span></h3>
   <div class="leaks">
     <div class="leak"><span class="n">1</span><div><div class="t">Hilfsverb fällt im Perfekt weg</div><div class="d"><code>„Dort wir geblieben"</code> → muss heißen <b>„Dort sind wir geblieben"</b>. Größter Killer.</div></div></div>
     <div class="leak"><span class="n">2</span><div><div class="t">Verb nicht an Position 2</div><div class="d"><code>„Manchmal es ist"</code> → <b>„Manchmal ist es"</b>. Nach Startwort kommt das Verb sofort.</div></div></div>
@@ -392,7 +406,7 @@
     <div class="leak"><span class="n">4</span><div><div class="t">Relativpronomen + Genus</div><div class="d">der Film, <b>den</b>… / die Kollegin, <b>der</b>… / <b>das</b> Buch, <b>das</b>…</div></div></div>
   </div>
 
-  <h3 class="sub">Deine Stärken — NICHT überüben</h3>
+  <h3 class="sub">Deine Stärken — NICHT überüben<span class="en">Your strengths — don't over-practice</span></h3>
   <div class="strengths">
     <span class="chip-ok">Nebensätze (Verb ans Ende)</span>
     <span class="chip-ok">Konjunktiv II (wäre / würde)</span>
@@ -402,55 +416,55 @@
 
   <div class="note"><strong>Wichtigste Erkenntnis:</strong> Du hältst „Nebensätze" für eine Schwäche — der Test sagt das Gegenteil. Wir investieren dort <strong>null</strong> Zeit und stecken alles in Automatik (Leck 1 + 2) und die festen Listen (Leck 3 + 4).</div>
 
-  <h3 class="sub">Die 3 täglichen Reflex-Drills</h3>
+  <h3 class="sub">Die 3 täglichen Reflex-Drills<span class="en">The 3 daily reflex drills</span></h3>
   <div class="grid g3">
-    <div class="drill"><div class="dh"><span class="dl">A</span><span class="dt">Hilfsverb-Reflex</span></div><div class="db">Perfekt = <b>immer</b> zwei Verben. Erzähl täglich dein gestriges Programm in 8 Sätzen, jeder mit <i>sein/haben</i>. Aufnehmen.<div class="ex"><span class="g">bin</span> gegangen · <span class="g">habe</span> gesehen · <span class="g">sind</span> gefahren</div><b>sein</b> = Bewegung + Zustandswechsel. Sonst <b>haben</b>.</div></div>
-    <div class="drill"><div class="dh"><span class="dl">B</span><span class="dt">Verb-Zweit</span></div><div class="db">Egal was am Anfang steht — das Verb steht an Position 2.<div class="ex"><span class="b">Manchmal es ist…</span><br><span class="g">Manchmal ist es…</span></div>10 Sätze täglich, jeder mit anderem Startwort (Heute, Danach, Manchmal, Deshalb…).</div></div>
-    <div class="drill"><div class="dh"><span class="dl">C</span><span class="dt">Präpositions-Feuer</span></div><div class="db">10 schnelle Fragen, sofort antworten:<div class="ex">Worauf freust du dich? → <span class="g">auf</span><br>Wofür interessierst du dich? → <span class="g">für</span><br>Woran denkst du? → <span class="g">an</span></div></div></div>
+    <div class="drill"><div class="dh"><span class="dl">A</span><span class="dt">Hilfsverb-Reflex<small class="en2">Auxiliary reflex</small></span></div><div class="db">Perfekt = <b>immer</b> zwei Verben. Erzähl täglich dein gestriges Programm in 8 Sätzen, jeder mit <i>sein/haben</i>. Aufnehmen.<div class="ex"><span class="g">bin</span> gegangen · <span class="g">habe</span> gesehen · <span class="g">sind</span> gefahren</div><b>sein</b> = Bewegung + Zustandswechsel. Sonst <b>haben</b>.</div></div>
+    <div class="drill"><div class="dh"><span class="dl">B</span><span class="dt">Verb-Zweit<small class="en2">Verb in position 2</small></span></div><div class="db">Egal was am Anfang steht — das Verb steht an Position 2.<div class="ex"><span class="b">Manchmal es ist…</span><br><span class="g">Manchmal ist es…</span></div>10 Sätze täglich, jeder mit anderem Startwort (Heute, Danach, Manchmal, Deshalb…).</div></div>
+    <div class="drill"><div class="dh"><span class="dl">C</span><span class="dt">Präpositions-Feuer<small class="en2">Preposition rapid-fire</small></span></div><div class="db">10 schnelle Fragen, sofort antworten:<div class="ex">Worauf freust du dich? → <span class="g">auf</span><br>Wofür interessierst du dich? → <span class="g">für</span><br>Woran denkst du? → <span class="g">an</span></div></div></div>
   </div>
 </section>
 
 <!-- ============ PLAN ============ -->
 <section class="panel" id="plan" role="tabpanel">
-  <div class="eyebrow2">Tag für Tag</div>
-  <h2 class="sec">Die 24-Tage-Route</h2>
+  <div class="eyebrow2">Tag für Tag · Day by day</div>
+  <h2 class="sec">Die 24-Tage-Route<span class="en">The 24-day route</span></h2>
   <p class="lead">Wochentags 60–90 Min, Wochenende 2–3 Std mit den Mock-Prüfungen. Hak Aufgaben ab — dein Fortschritt wird lokal gespeichert. <b>Pflicht jeden Tag: Sprechen + Vokabeln.</b></p>
   <div id="planRoot"></div>
 </section>
 
 <!-- ============ SPRECHEN ============ -->
 <section class="panel" id="sprechen" role="tabpanel">
-  <div class="eyebrow2">Dein wichtigstes Kapital</div>
-  <h2 class="sec">Sprechen — Werkzeuge & Themen</h2>
+  <div class="eyebrow2">Dein wichtigstes Kapital · Your biggest asset</div>
+  <h2 class="sec">Sprechen — Werkzeuge & Themen<span class="en">Speaking — tools & topics</span></h2>
   <p class="lead">Erst das Skelett, das für <i>jedes</i> Thema funktioniert. Dann 14 Themen mit Modellsatz, Vokabeln und der typischen Falle.</p>
 
-  <h3 class="sub">🗣️ Präsentations-Skelett (für jedes Thema)</h3>
+  <h3 class="sub">🗣️ Präsentations-Skelett (für jedes Thema)<span class="en">Presentation skeleton (for any topic)</span></h3>
   <div class="card" style="padding:6px 18px">
     <div class="skeleton">
-      <div class="step"><span class="sn"></span><div><div class="st">Einleitung</div><div class="sx"><em>„Ich möchte heute über das Thema … sprechen. Das ist wichtig, weil …"</em></div></div></div>
-      <div class="step"><span class="sn"></span><div><div class="st">Eigene Situation</div><div class="sx"><em>„In meinem Heimatland / In Deutschland ist es so, dass …"</em></div></div></div>
-      <div class="step"><span class="sn"></span><div><div class="st">Vor- & Nachteile</div><div class="sx"><em>„Einerseits …, andererseits …"</em> / <em>„Ein Vorteil ist …, ein Nachteil jedoch …"</em></div></div></div>
-      <div class="step"><span class="sn"></span><div><div class="st">Beispiel</div><div class="sx"><em>„Ich gebe ein Beispiel: …"</em> / <em>„Aus eigener Erfahrung kann ich sagen, dass …"</em></div></div></div>
-      <div class="step"><span class="sn"></span><div><div class="st">Fazit + Meinung</div><div class="sx"><em>„Zusammenfassend lässt sich sagen, dass … Meiner Meinung nach …"</em></div></div></div>
+      <div class="step"><span class="sn"></span><div><div class="st">Einleitung <span class="en-i">· Introduction</span></div><div class="sx"><em>„Ich möchte heute über das Thema … sprechen. Das ist wichtig, weil …"</em></div></div></div>
+      <div class="step"><span class="sn"></span><div><div class="st">Eigene Situation <span class="en-i">· Your situation</span></div><div class="sx"><em>„In meinem Heimatland / In Deutschland ist es so, dass …"</em></div></div></div>
+      <div class="step"><span class="sn"></span><div><div class="st">Vor- & Nachteile <span class="en-i">· Pros & cons</span></div><div class="sx"><em>„Einerseits …, andererseits …"</em> / <em>„Ein Vorteil ist …, ein Nachteil jedoch …"</em></div></div></div>
+      <div class="step"><span class="sn"></span><div><div class="st">Beispiel <span class="en-i">· Example</span></div><div class="sx"><em>„Ich gebe ein Beispiel: …"</em> / <em>„Aus eigener Erfahrung kann ich sagen, dass …"</em></div></div></div>
+      <div class="step"><span class="sn"></span><div><div class="st">Fazit + Meinung <span class="en-i">· Conclusion + opinion</span></div><div class="sx"><em>„Zusammenfassend lässt sich sagen, dass … Meiner Meinung nach …"</em></div></div></div>
     </div>
   </div>
   <div class="note">🎓 <strong>B2-Glanz:</strong> Bau <strong>ein</strong> Passiv ein (<em>„Heute wird viel über … diskutiert"</em>) und <strong>einen</strong> Konjunktiv II (<em>„Man könnte argumentieren, dass …"</em>). Zwei Sätze — sofort klingt es höher.</div>
 
-  <h3 class="sub">14 Themen (Frage · Modell · Vokabeln · Falle)</h3>
+  <h3 class="sub">14 Themen (Frage · Modell · Vokabeln · Falle)<span class="en">14 topics (question · model · vocab · trap)</span></h3>
   <div id="topicsRoot"></div>
 
-  <h3 class="sub">🤝 „Gemeinsam planen" & Diskutieren — Phrasen</h3>
+  <h3 class="sub">🤝 „Gemeinsam planen" & Diskutieren — Phrasen<span class="en">Planning together & discussing — phrases</span></h3>
   <div class="phrases" id="planPhrases"></div>
 </section>
 
 <!-- ============ SCHREIBEN ============ -->
 <section class="panel" id="schreiben" role="tabpanel">
-  <div class="eyebrow2">Formelhaft = leichte Punkte</div>
-  <h2 class="sec">Schreiben — Vorlagen & Checkliste</h2>
+  <div class="eyebrow2">Formelhaft = leichte Punkte · Formulaic = easy points</div>
+  <h2 class="sec">Schreiben — Vorlagen & Checkliste<span class="en">Writing — templates & checklist</span></h2>
   <p class="lead">Drei Vorlagen decken alle B1-Schreibaufgaben ab. Kopieren, anpassen, üben.</p>
   <div id="tmplRoot"></div>
 
-  <h3 class="sub">✅ Schreib-Checkliste (60 Sek vor dem Abgeben)</h3>
+  <h3 class="sub">✅ Schreib-Checkliste (60 Sek vor dem Abgeben)<span class="en">Writing checklist (60 sec before submitting)</span></h3>
   <div class="card" style="padding:16px 18px">
     <ul class="checklist">
       <li><b>Alle Punkte</b> der Aufgabe abgedeckt? (telc bewertet das streng)</li>
@@ -466,13 +480,13 @@
 
 <!-- ============ GRAMMATIK ============ -->
 <section class="panel" id="grammatik" role="tabpanel">
-  <div class="eyebrow2">Spickzettel</div>
-  <h2 class="sec">Grammatik & Vokabeln auf einen Blick</h2>
+  <div class="eyebrow2">Spickzettel · Cheat sheet</div>
+  <h2 class="sec">Grammatik & Vokabeln auf einen Blick<span class="en">Grammar & vocab at a glance</span></h2>
   <p class="lead">Nur das, was Punkte bringt. Die Präpositionen übst du aktiv im Quiz-Tab.</p>
 
-  <h3 class="sub">🔴 Feste Präpositionen — Pflichtliste</h3>
+  <h3 class="sub">🔴 Feste Präpositionen — Pflichtliste<span class="en">Fixed prepositions — must-know list</span></h3>
   <div class="card" style="padding:16px 18px;margin-bottom:8px">
-    <div style="font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--tinte-weich);margin-bottom:8px">Verben</div>
+    <div style="font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--tinte-weich);margin-bottom:8px">Verben · Verbs</div>
     <div class="preplist">
       <div>sich freuen <b>auf</b> (Zukunft) / <b>über</b></div><div>sich interessieren <b>für</b></div>
       <div>sich kümmern <b>um</b></div><div>denken <b>an</b></div>
@@ -483,7 +497,7 @@
       <div>träumen <b>von</b></div><div>abhängen <b>von</b></div>
       <div>gehören <b>zu</b></div><div>sich gewöhnen <b>an</b></div>
     </div>
-    <div style="font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--tinte-weich);margin:14px 0 8px">Adjektive</div>
+    <div style="font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--tinte-weich);margin:14px 0 8px">Adjektive · Adjectives</div>
     <div class="preplist">
       <div>stolz <b>auf</b></div><div>zufrieden <b>mit</b></div>
       <div>einverstanden <b>mit</b></div><div>interessiert <b>an</b></div>
@@ -492,7 +506,7 @@
     </div>
   </div>
 
-  <h3 class="sub">🔴 Relativpronomen (Kasus + Genus)</h3>
+  <h3 class="sub">🔴 Relativpronomen (Kasus + Genus)<span class="en">Relative pronouns (case + gender)</span></h3>
   <div class="tbl-wrap">
     <table class="tbl">
       <tr><th></th><th>maskulin</th><th>feminin</th><th>neutrum</th><th>Plural</th></tr>
@@ -503,14 +517,14 @@
   </div>
   <p style="font-size:13.5px;color:var(--tinte-weich);margin-bottom:6px">Frage zur Auswahl: <i>Welcher Fall steht im Relativsatz?</i> → <code style="font-family:var(--mono);font-size:12px">Das ist der Mann, den ich kenne</code> (ich kenne <b>ihn</b> = Akk). Mit Präposition: <code style="font-family:var(--mono);font-size:12px">der Kollege, mit dem ich arbeite</code>.</p>
 
-  <h3 class="sub">Genus-Schnellregeln (häufige Endungen)</h3>
+  <h3 class="sub">Genus-Schnellregeln (häufige Endungen)<span class="en">Gender quick-rules (common endings)</span></h3>
   <div class="genus-grid">
     <div class="genus der"><div class="art">der</div><div class="en"><code>-er, -ling, -ismus, -or</code><br>der Lehrer, der Motor</div></div>
     <div class="genus die"><div class="art">die</div><div class="en"><code>-ung, -heit, -keit, -schaft, -tion, -tät</code><br>die Meinung, die Situation</div></div>
     <div class="genus das"><div class="art">das</div><div class="en"><code>-chen, -lein, -um, -ment, Ge-</code><br>das Mädchen, das Studium</div></div>
   </div>
 
-  <h3 class="sub">🎓 B2-Konnektoren (2–3 pro Text einbauen)</h3>
+  <h3 class="sub">🎓 B2-Konnektoren (2–3 pro Text einbauen)<span class="en">B2 connectors (use 2–3 per text)</span></h3>
   <div class="tbl-wrap">
     <table class="tbl">
       <tr><th>Deutsch</th><th>Bedeutung</th></tr>
@@ -525,7 +539,7 @@
     </table>
   </div>
 
-  <h3 class="sub">⚠️ TOP 20 Fehler — vermeiden</h3>
+  <h3 class="sub">⚠️ TOP 20 Fehler — vermeiden<span class="en">Top 20 mistakes — avoid</span></h3>
   <ol class="num-list danger">
     <li><span class="hot">Hilfsverb vergessen (<code>„Ich nach Hause gegangen"</code>)</span></li>
     <li><span class="hot">Verb nicht an Position 2 nach Startwort</span></li>
@@ -549,7 +563,7 @@
     <li>Zu kurze Antworten — immer <b>Grund + Beispiel</b></li>
   </ol>
 
-  <h3 class="sub">📚 TOP 100 Vokabeln</h3>
+  <h3 class="sub">📚 TOP 100 Vokabeln<span class="en">Top 100 vocabulary</span></h3>
   <details class="vocab-cols card" style="padding:0 18px">
     <summary>Thematische Wortliste öffnen →</summary>
     <div id="vocabRoot" style="padding-bottom:16px"></div>
@@ -558,28 +572,28 @@
 
 <!-- ============ QUIZ ============ -->
 <section class="panel" id="quiz" role="tabpanel">
-  <div class="eyebrow2">Aktives Abrufen schlägt Lesen</div>
-  <h2 class="sec">Präpositions-Quiz</h2>
+  <div class="eyebrow2">Aktives Abrufen schlägt Lesen · Active recall beats reading</div>
+  <h2 class="sec">Präpositions-Quiz<span class="en">Preposition quiz</span></h2>
   <p class="lead">Dein Schwachpunkt Nr. 3 — hier trainierst du ihn aktiv. Wähle die richtige Präposition. Bestleistung wird gespeichert.</p>
   <div id="quizRoot"></div>
 </section>
 
 <!-- ============ NOTFALL ============ -->
 <section class="panel" id="notfall" role="tabpanel">
-  <div class="eyebrow2">Endspurt</div>
-  <h2 class="sec">Notfallplan</h2>
+  <div class="eyebrow2">Endspurt · Final stretch</div>
+  <h2 class="sec">Notfallplan<span class="en">Emergency plan</span></h2>
   <p class="lead">Kurz vor der Prüfung gilt: nichts Neues mehr lernen. Wiederholen, sprechen, schlafen.</p>
 
-  <div class="em"><div class="eh"><span class="ed">Letzte 7 Tage</span> Mo 8.7 – Di 14.7</div>
+  <div class="em"><div class="eh"><span class="ed">Letzte 7 Tage · Last 7 days</span> Mo 8.7 – Di 14.7</div>
     <ul><li><b>Keine neuen Themen.</b> Nur wiederholen + sprechen + 1 letzte Mock.</li><li>Täglich laut sprechen (Präsentations-Skelett).</li><li>Top-Phrasen & Top-Fehler täglich überfliegen.</li></ul></div>
 
-  <div class="em d3"><div class="eh"><span class="ed">Letzte 3 Tage</span> So 12.7 – Di 14.7</div>
+  <div class="em d3"><div class="eh"><span class="ed">Letzte 3 Tage · Last 3 days</span> So 12.7 – Di 14.7</div>
     <ul><li>Zeit reduzieren, viel Schlaf.</li><li>Deine 3 besten Präsentationen einmal locker durchgehen.</li><li>Präpositionsliste + Relativpronomen täglich ansehen.</li></ul></div>
 
-  <div class="em d1"><div class="eh"><span class="ed">Tag davor · Di 14.7</span></div>
+  <div class="em d1"><div class="eh"><span class="ed">Tag davor / day before · Di 14.7</span></div>
     <ul><li>Max. 45 Min, locker. Top-Listen einmal lesen.</li><li>Sachen packen: <b>Ausweis/Pass, Anmeldung, Stift, Uhr, Wasser</b>.</li><li>Kein Stress-Lernen. Spaziergang, früh ins Bett.</li></ul></div>
 
-  <div class="em exam"><div class="eh"><span class="ed">Prüfungstag · Mi 15.7</span></div>
+  <div class="em exam"><div class="eh"><span class="ed">Prüfungstag / exam day · Mi 15.7</span></div>
     <ul>
       <li>Gut frühstücken, 20 Min früher da sein.</li>
       <li><b>Lesen/Hören:</b> erst Fragen lesen, dann Text. Nie leer lassen — raten!</li>
@@ -587,9 +601,9 @@
       <li><b>Sprechen:</b> lieber <b>langsam & korrekt</b> als schnell & kaputt. Stockst du? <em>„Moment, lassen Sie mich kurz überlegen …"</em> (klingt B2!).</li>
     </ul></div>
 
-  <div class="mantra"><div class="ml">Dein Mantra im Raum</div><div class="mt">Hilfsverb nicht vergessen. · Verb auf Platz 2. · Grund + Beispiel.</div></div>
+  <div class="mantra"><div class="ml">Dein Mantra im Raum · Your mantra in the room</div><div class="mt">Hilfsverb nicht vergessen. · Verb auf Platz 2. · Grund + Beispiel.</div></div>
 
-  <h3 class="sub">⛔ Was du NICHT tun sollst</h3>
+  <h3 class="sub">⛔ Was du NICHT tun sollst<span class="en">What NOT to do</span></h3>
   <div class="card" style="padding:16px 18px">
     <ul class="skip">
       <li><b>Keine Nebensätze pauken.</b> Du kannst sie. Verschwendete Zeit.</li>
@@ -628,64 +642,64 @@ function daysBetween(a,b){return Math.round((b-new Date(a.getFullYear(),a.getMon
 
 /* ---------- PHASES ---------- */
 const PHASES=[
- {pl:"Phase 1",pt:"Lecks schließen",pd:"So 21. – Sa 27. Juni",color:"var(--p1)",range:[1,7]},
- {pl:"Phase 2",pt:"Prüfungsformat aufbauen",pd:"So 28.6 – So 5.7",color:"var(--p2)",range:[8,15]},
- {pl:"Phase 3",pt:"Üben & schärfen",pd:"Mo 6.7 – Sa 11.7",color:"var(--p3)",range:[16,21]},
- {pl:"Phase 4",pt:"Tapern & Peak",pd:"So 12.7 – Di 14.7",color:"var(--p4)",range:[22,24]},
+ {pl:"Phase 1",pt:"Lecks schließen",en:"Close the leaks",pd:"So 21. – Sa 27. Juni",color:"var(--p1)",range:[1,7]},
+ {pl:"Phase 2",pt:"Prüfungsformat aufbauen",en:"Build exam format",pd:"So 28.6 – So 5.7",color:"var(--p2)",range:[8,15]},
+ {pl:"Phase 3",pt:"Üben & schärfen",en:"Practice & sharpen",pd:"Mo 6.7 – Sa 11.7",color:"var(--p3)",range:[16,21]},
+ {pl:"Phase 4",pt:"Tapern & Peak",en:"Taper & peak",pd:"So 12.7 – Di 14.7",color:"var(--p4)",range:[22,24]},
 ];
 
 /* ---------- DAYS ---------- */
 const T=(k,t)=>({k,t});
 const DAYS=[
- {n:1,date:"So 21.6",dur:"2 Std",title:"Diagnose-Reparatur",tasks:[T("Gr","20 Perfekt-Sätze schreiben — jeder MIT sein/haben"),T("Spr","„Letztes Wochenende?“ — 10 Sätze, aufnehmen, Hilfsverben prüfen"),T("Vok","Thema Arbeit"),T("Schr","Mini-Meinung Fahrradwege (4 Sätze) mit dass + V2"),T("Check","Aufnahme anhören: Wie oft fehlt das Hilfsverb? Zahl notieren")]},
- {n:2,date:"Mo 22.6",dur:"75 Min",title:"Verb-Zweit-Regel",tasks:[T("Gr","V2-Drill: 15 Sätze mit Manchmal/Heute/Danach/Deshalb"),T("Spr","5 Sätze über deinen Arbeitstag, je anderes Startwort"),T("Vok","Mobilität + feste Präpositionen Teil 1"),T("Les","1 kurzer Artikel, 5 Min, Hauptidee"),T("Fehler","trotz vs. trotzdem")]},
- {n:3,date:"Di 23.6",dur:"75 Min",title:"Feste Präpositionen",tasks:[T("Gr","Präpositionsliste: 20 Stück laut + Beispielsatz"),T("Spr","„Worauf freust du dich? Wofür interessierst du dich?“"),T("Vok","Umwelt / Natur"),T("Hör","1 Hörtext Teil 1, einmal hören, Stichpunkte"),T("Check","10 Lücken-Sätze (für/auf/an/über/mit)")]},
- {n:4,date:"Mi 24.6",dur:"75 Min",title:"Relativpronomen",tasks:[T("Gr","12 Relativsätze (je 4× Nom/Akk/Dativ)"),T("Spr","5 Personen/Dinge mit Relativsatz beschreiben"),T("Vok","Gesundheit"),T("Schr","5 Sätze über deine Stadt mit je 1 Relativsatz"),T("Fehler","Genus: der/das Buch, die Woche")]},
- {n:5,date:"Do 25.6",dur:"75 Min",title:"Genus-Boost",tasks:[T("Gr","40 häufigste Nomen mit Artikel + Endungs-Regeln"),T("Spr","Alltagsgeschichte erzählen (3 Min), aufnehmen"),T("Vok","Wohnen"),T("Les","Lesen Teil 2 (Anzeigen zuordnen)"),T("Check","Genus von 20 Nomen raten → prüfen")]},
- {n:6,date:"Fr 26.6",dur:"75 Min",title:"Mischtag",tasks:[T("Gr","Wechselpräpositionen Wo?/Wohin?, 10 Sätze"),T("Spr","Präsentations-Skelett zum 1. Mal — Thema Medien"),T("Vok","Technologie / Medien"),T("Hör","Hören Teil 2"),T("Fehler","Englische Wörter rausfiltern (for→für, and→und)")]},
- {n:7,date:"Sa 27.6",dur:"2,5 Std",title:"Wochen-Review",tasks:[T("Wdh","Alle Drills aus Tag 1–6 (je 5 Min)"),T("Spr","Mini-Mock: Präsentation Umwelt, voll aufnehmen (3–4 Min)"),T("Schr","1 vollständige Meinungs-/Forumsantwort (80 Wörter)"),T("Check","Aufnahme Tag 1 vs. heute — Hilfsverb-Fehler gesunken?")]},
- {n:8,date:"So 28.6",dur:"2 Std",title:"Schreiben: halbformelle E-Mail",tasks:[T("Schr","Beschwerde-E-Mail (alle 4 Punkte abdecken)"),T("Gr","Konjunktiv II höflich (Könnten Sie…, Ich würde gern…)"),T("Spr","„Gemeinsam planen“ — Vorschläge + Gegenvorschläge"),T("Vok","Reisen")]},
- {n:9,date:"Mo 29.6",dur:"75 Min",title:"Sprechen: Präsentation",tasks:[T("Spr","Präsentation Gesundheit, 4 Min, Einleitung→Fazit"),T("Gr","Passiv richtig getaktet (wird/wurde gemacht)"),T("Vok","Freizeit"),T("Hör","Hören Teil 3")]},
- {n:10,date:"Di 30.6",dur:"75 Min",title:"Sprechen: Diskussion",tasks:[T("Spr","Meinung + zustimmen/widersprechen (Phrasen)"),T("Gr","B2-Konnektoren (nicht nur…sondern auch, einerseits…)"),T("Vok","Konsum"),T("Les","Lesen Teil 3 (richtig/falsch)")]},
- {n:11,date:"Mi 1.7",dur:"75 Min",title:"Schreiben: Meinung/Forum",tasks:[T("Schr","Forumsbeitrag „Aufs Auto verzichten?“"),T("Gr","weil / deshalb / trotzdem / deswegen unterscheiden"),T("Vok","Lernen / Bildung"),T("Check","Einleitung, 2 Argumente, Beispiel, Fazit vorhanden?")]},
- {n:12,date:"Do 2.7",dur:"75 Min",title:"Sprech-Marathon",tasks:[T("Spr","3 Präsentationen (Familie, Freunde, Technologie), je 3 Min"),T("Vok","Familie / Freunde"),T("Hör","Hören Teil 1 + 2 (Tempo erhöhen)")]},
- {n:13,date:"Fr 3.7",dur:"75 Min",title:"Schwachstellen gezielt",tasks:[T("Gr","Schwächster Drill der Woche — 20 Min nur das"),T("Spr","10 Zufallsfragen, je 30 Sek, ohne Vorbereitung"),T("Schr","Kurze Einladung schreiben")]},
- {n:14,date:"Sa 4.7",dur:"3 Std",title:"ERSTE VOLL-MOCKPRÜFUNG",mock:true,tasks:[T("Mock","Lesen komplett (mit Uhr)"),T("Mock","Hören komplett"),T("Mock","Schreiben komplett"),T("Mock","Sprechen alle Teile, aufnehmen"),T("Regel","Keine Pausen, keine Hilfsmittel — echter Tag")]},
- {n:15,date:"So 5.7",dur:"2,5 Std",title:"Mock-Auswertung",tasks:[T("Check","Mock gnadenlos korrigieren"),T("Check","Fehlerliste nach Typ (Hilfsverb? V2? Präp? Genus?)"),T("Check","Top-3-Fehlertypen = Fokus Phase 3"),T("Spr","Schwächste Antwort 3× neu sprechen, jedes Mal besser")]},
- {n:16,date:"Mo 6.7",dur:"75 Min",title:"Fokus Fehlertyp #1",tasks:[T("Gr","Mock-Fehlertyp #1 gezielt üben"),T("Spr","Präsentation Arbeit"),T("Vok","Top-100 wiederholen (1. Hälfte)")]},
- {n:17,date:"Di 7.7",dur:"75 Min",title:"Fokus Fehlertyp #2",tasks:[T("Gr","Fehlertyp #2 gezielt üben"),T("Schr","1 E-Mail unter Zeit (20 Min)"),T("Hör","1 Hörteil")]},
- {n:18,date:"Mi 8.7",dur:"75 Min",title:"Fokus Fehlertyp #3",tasks:[T("Gr","Fehlertyp #3 gezielt üben"),T("Spr","„Planen“-Aufgabe + Diskussion"),T("Vok","Top-100 (2. Hälfte)")]},
- {n:19,date:"Do 9.7",dur:"75 Min",title:"B2-Glanz-Tag",tasks:[T("Spr","Jede Antwort: 1 B2-Konnektor + 1 Konjunktiv-II-Satz"),T("Les","1 Leseteil"),T("Vok","Nomen-Verb-Verbindungen")]},
- {n:20,date:"Fr 10.7",dur:"75 Min",title:"Spontan-Drill",tasks:[T("Spr","15 Zufallsfragen, je 45 Sek"),T("Schr","1 Forumsbeitrag unter Zeit"),T("Wdh","Top-20-Phrasen")]},
- {n:21,date:"Sa 11.7",dur:"3 Std",title:"ZWEITE VOLL-MOCKPRÜFUNG",mock:true,tasks:[T("Mock","Komplette Prüfung wie Tag 14"),T("Check","Fehlerliste — Vergleich zur ersten Mock"),T("Ziel","Deutlich weniger Hilfsverb-/V2-Fehler?")]},
- {n:22,date:"So 12.7",dur:"2 Std",title:"Letzte Auswertung",tasks:[T("Check","Letzte Mock auswerten"),T("Spr","3 beste Präsentationen locker durchgehen"),T("Wdh","Top-20-Phrasen wiederholen")]},
- {n:23,date:"Mo 13.7",dur:"60 Min",title:"Taper — nur Wiederholung",tasks:[T("Wdh","Präpositionsliste + Relativpronomen + Hilfsverb-Reflex"),T("Spr","1 lockere Präsentation"),T("Regel","Keine neuen Aufgaben")]},
- {n:24,date:"Di 14.7",dur:"45 Min",title:"Tag vor der Prüfung",tasks:[T("Wdh","Top-20-Phrasen + Top-20-Fehler einmal lesen"),T("Regel","Sachen packen: Ausweis, Anmeldung, Stift"),T("Regel","Früh schlafen — kein Stress-Lernen")]},
+ {n:1,date:"So 21.6",dur:"2 Std",title:"Diagnose-Reparatur",en:"Diagnosis repair",tasks:[T("Gr","20 Perfekt-Sätze schreiben — jeder MIT sein/haben"),T("Spr","„Letztes Wochenende?“ — 10 Sätze, aufnehmen, Hilfsverben prüfen"),T("Vok","Thema Arbeit"),T("Schr","Mini-Meinung Fahrradwege (4 Sätze) mit dass + V2"),T("Check","Aufnahme anhören: Wie oft fehlt das Hilfsverb? Zahl notieren")]},
+ {n:2,date:"Mo 22.6",dur:"75 Min",title:"Verb-Zweit-Regel",en:"Verb-second rule",tasks:[T("Gr","V2-Drill: 15 Sätze mit Manchmal/Heute/Danach/Deshalb"),T("Spr","5 Sätze über deinen Arbeitstag, je anderes Startwort"),T("Vok","Mobilität + feste Präpositionen Teil 1"),T("Les","1 kurzer Artikel, 5 Min, Hauptidee"),T("Fehler","trotz vs. trotzdem")]},
+ {n:3,date:"Di 23.6",dur:"75 Min",title:"Feste Präpositionen",en:"Fixed prepositions",tasks:[T("Gr","Präpositionsliste: 20 Stück laut + Beispielsatz"),T("Spr","„Worauf freust du dich? Wofür interessierst du dich?“"),T("Vok","Umwelt / Natur"),T("Hör","1 Hörtext Teil 1, einmal hören, Stichpunkte"),T("Check","10 Lücken-Sätze (für/auf/an/über/mit)")]},
+ {n:4,date:"Mi 24.6",dur:"75 Min",title:"Relativpronomen",en:"Relative pronouns",tasks:[T("Gr","12 Relativsätze (je 4× Nom/Akk/Dativ)"),T("Spr","5 Personen/Dinge mit Relativsatz beschreiben"),T("Vok","Gesundheit"),T("Schr","5 Sätze über deine Stadt mit je 1 Relativsatz"),T("Fehler","Genus: der/das Buch, die Woche")]},
+ {n:5,date:"Do 25.6",dur:"75 Min",title:"Genus-Boost",en:"Gender boost",tasks:[T("Gr","40 häufigste Nomen mit Artikel + Endungs-Regeln"),T("Spr","Alltagsgeschichte erzählen (3 Min), aufnehmen"),T("Vok","Wohnen"),T("Les","Lesen Teil 2 (Anzeigen zuordnen)"),T("Check","Genus von 20 Nomen raten → prüfen")]},
+ {n:6,date:"Fr 26.6",dur:"75 Min",title:"Mischtag",en:"Mixed day",tasks:[T("Gr","Wechselpräpositionen Wo?/Wohin?, 10 Sätze"),T("Spr","Präsentations-Skelett zum 1. Mal — Thema Medien"),T("Vok","Technologie / Medien"),T("Hör","Hören Teil 2"),T("Fehler","Englische Wörter rausfiltern (for→für, and→und)")]},
+ {n:7,date:"Sa 27.6",dur:"2,5 Std",title:"Wochen-Review",en:"Weekly review",tasks:[T("Wdh","Alle Drills aus Tag 1–6 (je 5 Min)"),T("Spr","Mini-Mock: Präsentation Umwelt, voll aufnehmen (3–4 Min)"),T("Schr","1 vollständige Meinungs-/Forumsantwort (80 Wörter)"),T("Check","Aufnahme Tag 1 vs. heute — Hilfsverb-Fehler gesunken?")]},
+ {n:8,date:"So 28.6",dur:"2 Std",title:"Schreiben: halbformelle E-Mail",en:"Writing: semi-formal email",tasks:[T("Schr","Beschwerde-E-Mail (alle 4 Punkte abdecken)"),T("Gr","Konjunktiv II höflich (Könnten Sie…, Ich würde gern…)"),T("Spr","„Gemeinsam planen“ — Vorschläge + Gegenvorschläge"),T("Vok","Reisen")]},
+ {n:9,date:"Mo 29.6",dur:"75 Min",title:"Sprechen: Präsentation",en:"Speaking: presentation",tasks:[T("Spr","Präsentation Gesundheit, 4 Min, Einleitung→Fazit"),T("Gr","Passiv richtig getaktet (wird/wurde gemacht)"),T("Vok","Freizeit"),T("Hör","Hören Teil 3")]},
+ {n:10,date:"Di 30.6",dur:"75 Min",title:"Sprechen: Diskussion",en:"Speaking: discussion",tasks:[T("Spr","Meinung + zustimmen/widersprechen (Phrasen)"),T("Gr","B2-Konnektoren (nicht nur…sondern auch, einerseits…)"),T("Vok","Konsum"),T("Les","Lesen Teil 3 (richtig/falsch)")]},
+ {n:11,date:"Mi 1.7",dur:"75 Min",title:"Schreiben: Meinung/Forum",en:"Writing: opinion/forum",tasks:[T("Schr","Forumsbeitrag „Aufs Auto verzichten?“"),T("Gr","weil / deshalb / trotzdem / deswegen unterscheiden"),T("Vok","Lernen / Bildung"),T("Check","Einleitung, 2 Argumente, Beispiel, Fazit vorhanden?")]},
+ {n:12,date:"Do 2.7",dur:"75 Min",title:"Sprech-Marathon",en:"Speaking marathon",tasks:[T("Spr","3 Präsentationen (Familie, Freunde, Technologie), je 3 Min"),T("Vok","Familie / Freunde"),T("Hör","Hören Teil 1 + 2 (Tempo erhöhen)")]},
+ {n:13,date:"Fr 3.7",dur:"75 Min",title:"Schwachstellen gezielt",en:"Target weak spots",tasks:[T("Gr","Schwächster Drill der Woche — 20 Min nur das"),T("Spr","10 Zufallsfragen, je 30 Sek, ohne Vorbereitung"),T("Schr","Kurze Einladung schreiben")]},
+ {n:14,date:"Sa 4.7",dur:"3 Std",title:"ERSTE VOLL-MOCKPRÜFUNG",en:"First full mock exam",mock:true,tasks:[T("Mock","Lesen komplett (mit Uhr)"),T("Mock","Hören komplett"),T("Mock","Schreiben komplett"),T("Mock","Sprechen alle Teile, aufnehmen"),T("Regel","Keine Pausen, keine Hilfsmittel — echter Tag")]},
+ {n:15,date:"So 5.7",dur:"2,5 Std",title:"Mock-Auswertung",en:"Mock review",tasks:[T("Check","Mock gnadenlos korrigieren"),T("Check","Fehlerliste nach Typ (Hilfsverb? V2? Präp? Genus?)"),T("Check","Top-3-Fehlertypen = Fokus Phase 3"),T("Spr","Schwächste Antwort 3× neu sprechen, jedes Mal besser")]},
+ {n:16,date:"Mo 6.7",dur:"75 Min",title:"Fokus Fehlertyp #1",en:"Focus: error type #1",tasks:[T("Gr","Mock-Fehlertyp #1 gezielt üben"),T("Spr","Präsentation Arbeit"),T("Vok","Top-100 wiederholen (1. Hälfte)")]},
+ {n:17,date:"Di 7.7",dur:"75 Min",title:"Fokus Fehlertyp #2",en:"Focus: error type #2",tasks:[T("Gr","Fehlertyp #2 gezielt üben"),T("Schr","1 E-Mail unter Zeit (20 Min)"),T("Hör","1 Hörteil")]},
+ {n:18,date:"Mi 8.7",dur:"75 Min",title:"Fokus Fehlertyp #3",en:"Focus: error type #3",tasks:[T("Gr","Fehlertyp #3 gezielt üben"),T("Spr","„Planen“-Aufgabe + Diskussion"),T("Vok","Top-100 (2. Hälfte)")]},
+ {n:19,date:"Do 9.7",dur:"75 Min",title:"B2-Glanz-Tag",en:"B2 polish day",tasks:[T("Spr","Jede Antwort: 1 B2-Konnektor + 1 Konjunktiv-II-Satz"),T("Les","1 Leseteil"),T("Vok","Nomen-Verb-Verbindungen")]},
+ {n:20,date:"Fr 10.7",dur:"75 Min",title:"Spontan-Drill",en:"Spontaneity drill",tasks:[T("Spr","15 Zufallsfragen, je 45 Sek"),T("Schr","1 Forumsbeitrag unter Zeit"),T("Wdh","Top-20-Phrasen")]},
+ {n:21,date:"Sa 11.7",dur:"3 Std",title:"ZWEITE VOLL-MOCKPRÜFUNG",en:"Second full mock exam",mock:true,tasks:[T("Mock","Komplette Prüfung wie Tag 14"),T("Check","Fehlerliste — Vergleich zur ersten Mock"),T("Ziel","Deutlich weniger Hilfsverb-/V2-Fehler?")]},
+ {n:22,date:"So 12.7",dur:"2 Std",title:"Letzte Auswertung",en:"Final review",tasks:[T("Check","Letzte Mock auswerten"),T("Spr","3 beste Präsentationen locker durchgehen"),T("Wdh","Top-20-Phrasen wiederholen")]},
+ {n:23,date:"Mo 13.7",dur:"60 Min",title:"Taper — nur Wiederholung",en:"Taper — review only",tasks:[T("Wdh","Präpositionsliste + Relativpronomen + Hilfsverb-Reflex"),T("Spr","1 lockere Präsentation"),T("Regel","Keine neuen Aufgaben")]},
+ {n:24,date:"Di 14.7",dur:"45 Min",title:"Tag vor der Prüfung",en:"Day before the exam",tasks:[T("Wdh","Top-20-Phrasen + Top-20-Fehler einmal lesen"),T("Regel","Sachen packen: Ausweis, Anmeldung, Stift"),T("Regel","Früh schlafen — kein Stress-Lernen")]},
 ];
 
 /* ---------- TOPICS ---------- */
 const TOPICS=[
- {t:"Arbeit",q:"Was ist Ihnen bei der Arbeit wichtig?",m:"Mir ist wichtig, dass die Arbeit sinnvoll ist und dass ich mich mit den Kollegen gut verstehe.",v:"der Beruf, die Stelle, das Gehalt, die Kollegen, Überstunden, die Work-Life-Balance, sich bewerben",f:"arbeiten <code>bei</code> einer Firma, arbeiten <code>als</code> Berater"},
- {t:"Freizeit",q:"Was machen Sie in Ihrer Freizeit?",m:"In meiner Freizeit treibe ich gern Sport, vor allem laufe ich. Außerdem treffe ich mich mit Freunden.",v:"sich entspannen, Sport treiben, sich treffen mit, das Hobby, die Abwechslung",f:"sich treffen <code>mit</code> + Dativ"},
- {t:"Wohnen",q:"Wie wohnen Sie? Stadt oder Land?",m:"Ich wohne in einer Wohnung in Berlin. Der Vorteil ist, dass alles in der Nähe ist.",v:"die Miete, die WG, das Viertel, die Umgebung, umziehen",f:"wohnen <code>in</code> + Dativ (Wo?), umziehen <code>nach</code> + Stadt"},
- {t:"Gesundheit",q:"Was tun Sie für Ihre Gesundheit?",m:"Um gesund zu bleiben, ernähre ich mich ausgewogen und bewege mich regelmäßig.",v:"sich ernähren, sich bewegen, der Stress, das Wohlbefinden, vorbeugen",f:"leiden <code>an/unter</code> + Dativ"},
- {t:"Umwelt",q:"Wie kann man die Umwelt schützen?",m:"Jeder kann etwas tun: weniger Auto fahren und Müll trennen. Außerdem wird zu viel Plastik verwendet.",v:"der Klimawandel, Müll trennen, Energie sparen, nachhaltig, die Verschmutzung",f:"Passiv-Zeit wird/wurde nicht verwechseln"},
- {t:"Natur",q:"Wie wichtig ist Natur für Sie?",m:"Natur ist mir sehr wichtig, weil sie mir hilft, den Kopf frei zu bekommen.",v:"die Grünfläche, sich erholen, die Ruhe, die Landschaft, regenerieren",f:"sich kümmern <code>um</code> + Akk"},
- {t:"Mobilität",q:"Welche Verkehrsmittel nutzen Sie?",m:"Ich fahre meistens mit dem Fahrrad, weil es schnell und umweltfreundlich ist.",v:"das Verkehrsmittel, der Stau, öffentliche Verkehrsmittel, der Fahrradweg",f:"mit <code>dem</code> Bus/Fahrrad/Auto (Dativ)"},
- {t:"Reisen",q:"Wohin reisen Sie gern?",m:"Am liebsten reise ich in Länder, in denen es warm ist. Letztes Jahr war ich in Großbritannien.",v:"die Reise, der Urlaub, das Reiseziel, besichtigen, die Unterkunft",f:"reisen <code>nach</code> + Land; in <code>die</code> Berge / an <code>die</code> See"},
- {t:"Medien",q:"Welche Rolle spielen Medien in Ihrem Leben?",m:"Medien spielen eine große Rolle. Ich informiere mich täglich online über Nachrichten.",v:"die Nachrichten, sich informieren über, soziale Medien, die Quelle",f:"sich informieren <code>über</code> + Akk"},
- {t:"Lernen",q:"Wie lernen Sie am besten?",m:"Ich lerne am besten, wenn ich Dinge praktisch anwende. Theorie allein reicht mir nicht.",v:"die Weiterbildung, sich konzentrieren, der Fortschritt, anwenden",f:"sich konzentrieren <code>auf</code> + Akk"},
- {t:"Konsum",q:"Kaufen Sie viel ein?",m:"Ich versuche, bewusst zu konsumieren und nur das zu kaufen, was ich wirklich brauche.",v:"konsumieren, sich leisten, das Angebot, verzichten auf",f:"verzichten <code>auf</code> + Akk"},
- {t:"Technologie",q:"Wie verändert Technologie unser Leben?",m:"Technologie macht vieles einfacher, aber sie hat auch Nachteile, zum Beispiel werden wir abhängiger.",v:"die Entwicklung, der Fortschritt, abhängig von, die künstliche Intelligenz",f:"abhängig <code>von</code> + Dativ"},
- {t:"Familie",q:"Wie wichtig ist Ihnen Familie?",m:"Familie ist mir sehr wichtig. Obwohl meine Familie weit weg wohnt, telefonieren wir oft.",v:"sich kümmern um, der Zusammenhalt, die Verantwortung",f:"sich kümmern <code>um</code> + Akk"},
- {t:"Freunde",q:"Was ist Ihnen bei Freunden wichtig?",m:"Bei Freunden ist mir wichtig, dass man sich aufeinander verlassen kann.",v:"sich verlassen auf, vertrauen, die Unterstützung, in Kontakt bleiben",f:"sich verlassen <code>auf</code> + Akk"},
+ {t:"Arbeit",en:"Work",q:"Was ist Ihnen bei der Arbeit wichtig?",m:"Mir ist wichtig, dass die Arbeit sinnvoll ist und dass ich mich mit den Kollegen gut verstehe.",v:"der Beruf, die Stelle, das Gehalt, die Kollegen, Überstunden, die Work-Life-Balance, sich bewerben",f:"arbeiten <code>bei</code> einer Firma, arbeiten <code>als</code> Berater"},
+ {t:"Freizeit",en:"Free time",q:"Was machen Sie in Ihrer Freizeit?",m:"In meiner Freizeit treibe ich gern Sport, vor allem laufe ich. Außerdem treffe ich mich mit Freunden.",v:"sich entspannen, Sport treiben, sich treffen mit, das Hobby, die Abwechslung",f:"sich treffen <code>mit</code> + Dativ"},
+ {t:"Wohnen",en:"Housing",q:"Wie wohnen Sie? Stadt oder Land?",m:"Ich wohne in einer Wohnung in Berlin. Der Vorteil ist, dass alles in der Nähe ist.",v:"die Miete, die WG, das Viertel, die Umgebung, umziehen",f:"wohnen <code>in</code> + Dativ (Wo?), umziehen <code>nach</code> + Stadt"},
+ {t:"Gesundheit",en:"Health",q:"Was tun Sie für Ihre Gesundheit?",m:"Um gesund zu bleiben, ernähre ich mich ausgewogen und bewege mich regelmäßig.",v:"sich ernähren, sich bewegen, der Stress, das Wohlbefinden, vorbeugen",f:"leiden <code>an/unter</code> + Dativ"},
+ {t:"Umwelt",en:"Environment",q:"Wie kann man die Umwelt schützen?",m:"Jeder kann etwas tun: weniger Auto fahren und Müll trennen. Außerdem wird zu viel Plastik verwendet.",v:"der Klimawandel, Müll trennen, Energie sparen, nachhaltig, die Verschmutzung",f:"Passiv-Zeit wird/wurde nicht verwechseln"},
+ {t:"Natur",en:"Nature",q:"Wie wichtig ist Natur für Sie?",m:"Natur ist mir sehr wichtig, weil sie mir hilft, den Kopf frei zu bekommen.",v:"die Grünfläche, sich erholen, die Ruhe, die Landschaft, regenerieren",f:"sich kümmern <code>um</code> + Akk"},
+ {t:"Mobilität",en:"Mobility",q:"Welche Verkehrsmittel nutzen Sie?",m:"Ich fahre meistens mit dem Fahrrad, weil es schnell und umweltfreundlich ist.",v:"das Verkehrsmittel, der Stau, öffentliche Verkehrsmittel, der Fahrradweg",f:"mit <code>dem</code> Bus/Fahrrad/Auto (Dativ)"},
+ {t:"Reisen",en:"Travel",q:"Wohin reisen Sie gern?",m:"Am liebsten reise ich in Länder, in denen es warm ist. Letztes Jahr war ich in Großbritannien.",v:"die Reise, der Urlaub, das Reiseziel, besichtigen, die Unterkunft",f:"reisen <code>nach</code> + Land; in <code>die</code> Berge / an <code>die</code> See"},
+ {t:"Medien",en:"Media",q:"Welche Rolle spielen Medien in Ihrem Leben?",m:"Medien spielen eine große Rolle. Ich informiere mich täglich online über Nachrichten.",v:"die Nachrichten, sich informieren über, soziale Medien, die Quelle",f:"sich informieren <code>über</code> + Akk"},
+ {t:"Lernen",en:"Learning",q:"Wie lernen Sie am besten?",m:"Ich lerne am besten, wenn ich Dinge praktisch anwende. Theorie allein reicht mir nicht.",v:"die Weiterbildung, sich konzentrieren, der Fortschritt, anwenden",f:"sich konzentrieren <code>auf</code> + Akk"},
+ {t:"Konsum",en:"Consumption",q:"Kaufen Sie viel ein?",m:"Ich versuche, bewusst zu konsumieren und nur das zu kaufen, was ich wirklich brauche.",v:"konsumieren, sich leisten, das Angebot, verzichten auf",f:"verzichten <code>auf</code> + Akk"},
+ {t:"Technologie",en:"Technology",q:"Wie verändert Technologie unser Leben?",m:"Technologie macht vieles einfacher, aber sie hat auch Nachteile, zum Beispiel werden wir abhängiger.",v:"die Entwicklung, der Fortschritt, abhängig von, die künstliche Intelligenz",f:"abhängig <code>von</code> + Dativ"},
+ {t:"Familie",en:"Family",q:"Wie wichtig ist Ihnen Familie?",m:"Familie ist mir sehr wichtig. Obwohl meine Familie weit weg wohnt, telefonieren wir oft.",v:"sich kümmern um, der Zusammenhalt, die Verantwortung",f:"sich kümmern <code>um</code> + Akk"},
+ {t:"Freunde",en:"Friends",q:"Was ist Ihnen bei Freunden wichtig?",m:"Bei Freunden ist mir wichtig, dass man sich aufeinander verlassen kann.",v:"sich verlassen auf, vertrauen, die Unterstützung, in Kontakt bleiben",f:"sich verlassen <code>auf</code> + Akk"},
 ];
 
 const PLAN_PHRASES=["Wie wäre es, wenn wir …?","Ich würde vorschlagen, dass wir …","Damit bin ich einverstanden.","Das sehe ich anders. Besser wäre …","Dann machen wir es so.","Ich bin der Meinung, dass …","Da stimme ich dir völlig zu.","Da muss ich dir widersprechen.","Das stimmt zwar, aber …","Darf ich kurz etwas dazu sagen?","Ich möchte noch ergänzen, dass …","Lass uns das so festhalten."];
 
 /* ---------- TEMPLATES ---------- */
 const TEMPLATES=[
- {t:"Halbformelle E-Mail (Beschwerde / Bitte)",body:`Betreff: [kurz & klar]
+ {t:"Halbformelle E-Mail (Beschwerde / Bitte)",en:"Semi-formal email (complaint / request)",body:`Betreff: [kurz & klar]
 
 Sehr geehrte Damen und Herren,
 
@@ -700,13 +714,13 @@ Ich würde mich freuen, wenn Sie [Bitte/Lösung].
 
 Mit freundlichen Grüßen
 [Name]`},
- {t:"Meinung / Forumsbeitrag",body:`Einleitung:  In letzter Zeit wird viel über … diskutiert. Ich möchte meine Meinung dazu sagen.
+ {t:"Meinung / Forumsbeitrag",en:"Opinion / forum post",body:`Einleitung:  In letzter Zeit wird viel über … diskutiert. Ich möchte meine Meinung dazu sagen.
 Meinung:     Meiner Meinung nach …
 Argument 1:  Einerseits …, denn …
 Argument 2:  Andererseits …  /  Außerdem …
 Beispiel:    Ein gutes Beispiel dafür ist …
 Fazit:       Zusammenfassend bin ich der Meinung, dass …`},
- {t:"Informelle Einladung / Nachricht",body:`Liebe/r [Name],
+ {t:"Informelle Einladung / Nachricht",en:"Informal invitation / message",body:`Liebe/r [Name],
 
 ich möchte dich gern zu … einladen. Es findet am … um … statt.
 Hast du Lust mitzukommen? Sag mir bitte bis … Bescheid.
@@ -767,12 +781,12 @@ function renderPlan(){
   const root=document.getElementById("planRoot");root.innerHTML="";
   PHASES.forEach(ph=>{
     const sec=el(`<div class="phase"></div>`);
-    sec.appendChild(el(`<div class="phase-head"><div class="phase-bar" style="background:${ph.color}"></div><div><div class="pl">${ph.pl}</div><div class="pt">${ph.pt}</div></div><div class="pd">${ph.pd}</div></div>`));
+    sec.appendChild(el(`<div class="phase-head"><div class="phase-bar" style="background:${ph.color}"></div><div><div class="pl">${ph.pl}</div><div class="pt">${ph.pt}</div><div class="en">${ph.en}</div></div><div class="pd">${ph.pd}</div></div>`));
     const grid=el(`<div class="days"></div>`);
     DAYS.filter(d=>d.n>=ph.range[0]&&d.n<=ph.range[1]).forEach(d=>{
       const allDone=d.tasks.every((_,i)=>progress[`d${d.n}-t${i}`]);
       const card=el(`<div class="day${d.mock?" special":""}${allDone?" iscomplete":""}" data-day="${d.n}"></div>`);
-      card.appendChild(el(`<div class="day-top"><span class="day-num">${d.n}</span><div class="day-meta"><div class="day-title">${esc(d.title)} ${d.mock?'<span class="badge-mock">Mock</span>':""}</div><div class="day-date">${d.date}</div></div><span class="day-dur">${d.dur}</span></div>`));
+      card.appendChild(el(`<div class="day-top"><span class="day-num">${d.n}</span><div class="day-meta"><div class="day-title">${esc(d.title)} ${d.mock?'<span class="badge-mock">Mock</span>':""}</div><div class="en">${esc(d.en)}</div><div class="day-date">${d.date}</div></div><span class="day-dur">${d.dur}</span></div>`));
       const ul=el(`<ul class="tasks"></ul>`);
       d.tasks.forEach((tk,i)=>{
         const id=`d${d.n}-t${i}`;
@@ -791,7 +805,7 @@ function renderPlan(){
 function renderTopics(){
   const root=document.getElementById("topicsRoot");
   TOPICS.forEach((tp,i)=>{
-    root.appendChild(el(`<details class="topic"><summary><span class="tn">${i+1}</span>${esc(tp.t)}<span class="ar">▾</span></summary><div class="topic-body"><div class="q">„${esc(tp.q)}“</div><div class="model">${esc(tp.m)}</div><div class="row"><span class="lbl">Vokabeln</span><span>${tp.v}</span></div><div class="row"><span class="lbl">Falle</span><span class="trap">${tp.f}</span></div></div></details>`));
+    root.appendChild(el(`<details class="topic"><summary><span class="tn">${i+1}</span>${esc(tp.t)} <span class="en-i">· ${esc(tp.en)}</span><span class="ar">▾</span></summary><div class="topic-body"><div class="q">„${esc(tp.q)}“</div><div class="model">${esc(tp.m)}</div><div class="row"><span class="lbl">Vokabeln</span><span>${tp.v}</span></div><div class="row"><span class="lbl">Falle</span><span class="trap">${tp.f}</span></div></div></details>`));
   });
   const pp=document.getElementById("planPhrases");
   PLAN_PHRASES.forEach(p=>pp.appendChild(el(`<span class="ph">${esc(p)}</span>`)));
@@ -800,7 +814,7 @@ function renderTopics(){
 function renderTemplates(){
   const root=document.getElementById("tmplRoot");
   TEMPLATES.forEach(tp=>{
-    const card=el(`<div class="tmpl"><div class="th"><span class="tt">${esc(tp.t)}</span><button class="copy">Kopieren</button></div><pre>${esc(tp.body)}</pre></div>`);
+    const card=el(`<div class="tmpl"><div class="th"><span class="tt">${esc(tp.t)}<small class="en2">${esc(tp.en)}</small></span><button class="copy">Kopieren</button></div><pre>${esc(tp.body)}</pre></div>`);
     const btn=card.querySelector(".copy");
     btn.addEventListener("click",async()=>{
       try{await navigator.clipboard.writeText(tp.body);}catch(e){const r=document.createRange();r.selectNode(card.querySelector("pre"));const s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand("copy");}catch(_){}s.removeAllRanges();}
@@ -873,16 +887,16 @@ function initHeader(){
   const now=new Date();
   const left=Math.max(0,Math.ceil((EXAM-now)/DAY));
   document.getElementById("cdNum").textContent=left;
-  document.getElementById("cdLbl").textContent=left===1?"Tag verbleibt":"Tage verbleiben";
+  document.getElementById("cdLbl").textContent=left===1?"Tag / day left":"Tage / days left";
   // route fill: progress along the 24-day timeline
   const todayDay=daysBetween(START,now)+1;
   const frac=Math.min(1,Math.max(0,(todayDay-1)/23));
   setTimeout(()=>{document.getElementById("routeFill").style.width=(frac*100)+"%";},120);
   // heute
   const tag=document.getElementById("heuteTag"),txt=document.getElementById("heuteText");
-  if(todayDay<1){tag.textContent="BALD";txt.textContent="Tag 1 startet am 21. Juni — bereit machen.";}
+  if(todayDay<1){tag.textContent="BALD";txt.textContent="Tag 1 startet am 21. Juni · Day 1 starts June 21.";}
   else if(todayDay>24){tag.textContent="🎓";txt.textContent=left===0?"Heute ist Prüfungstag — viel Erfolg!":"Endspurt — du bist bereit.";}
-  else{const d=DAYS[todayDay-1];tag.textContent="TAG "+todayDay;txt.textContent=d?d.title:"";}
+  else{const d=DAYS[todayDay-1];tag.textContent="TAG "+todayDay;txt.textContent=d?(d.title+" · "+d.en):"";}
 }
 
 /* ---------- TABS ---------- */
