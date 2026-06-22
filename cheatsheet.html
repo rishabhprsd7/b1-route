@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B1 Spickzettel — Prüfungstag & Unterwegs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --papier:#EFF1F5;--flaeche:#FFFFFF;--tinte:#14161C;--weich:#5A616F;--linie:#E0E3EB;
+    --blau:#1A46D4;--blau-tief:#122E8F;--blau-luft:#EAEEFD;--gelb:#FFC400;
+    --gruen:#178A57;--gruen-luft:#E6F4ED;--rot:#D8331A;--rot-luft:#FCEBE8;
+    --display:'Archivo',system-ui,-apple-system,"Segoe UI",sans-serif;
+    --body:'Inter',system-ui,-apple-system,"Segoe UI",sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--body);background:var(--papier);color:var(--tinte);line-height:1.45;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:0 16px}
+
+  /* toolbar — screen only */
+  .toolbar{position:sticky;top:0;z-index:10;background:rgba(239,241,245,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--linie);padding:11px 0}
+  .toolbar .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .toolbar .ttl{font-family:var(--display);font-weight:800;font-size:15px}
+  .toolbar .ttl span{color:var(--blau)}
+  .toolbar .sp{margin-left:auto}
+  .btn{font-family:var(--display);font-weight:700;font-size:13px;border:none;border-radius:8px;padding:9px 16px;cursor:pointer;transition:.15s}
+  .btn.print{background:var(--blau);color:#fff}.btn.print:hover{background:var(--blau-tief)}
+  .hint{font-size:12px;color:var(--weich)}
+
+  .sheet{background:var(--flaeche);border:1px solid var(--linie);border-radius:12px;margin:18px 0;padding:20px;box-shadow:0 6px 24px rgba(20,22,28,.06)}
+
+  /* sign header */
+  .sign{background:var(--blau-tief);color:#fff;border-radius:9px;padding:13px 16px;margin:-4px -4px 16px;
+    display:flex;align-items:center;gap:12px}
+  .sign .ic{font-family:var(--display);font-weight:900;font-size:13px;letter-spacing:.04em;color:var(--blau-tief);
+    background:var(--gelb);padding:5px 9px;border-radius:6px;white-space:nowrap}
+  .sign h1{font-family:var(--display);font-weight:800;font-size:clamp(18px,3.6vw,23px);letter-spacing:-.01em}
+  .sign .sub{margin-left:auto;font-size:12px;color:#B9C6FF;text-align:right;line-height:1.3}
+
+  /* mantra */
+  .mantra{border:2px solid var(--blau);border-radius:9px;padding:13px 16px;text-align:center;margin-bottom:16px;background:var(--blau-luft)}
+  .mantra .ml{font-family:var(--display);font-weight:700;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--blau);margin-bottom:5px}
+  .mantra .mt{font-family:var(--display);font-weight:800;font-size:clamp(15px,3.4vw,20px);color:var(--blau-tief);line-height:1.25}
+  .mantra .mt b{color:var(--rot)}
+
+  .cols{display:grid;gap:14px}
+  @media(min-width:680px){.cols{grid-template-columns:1fr 1fr}}
+
+  h2.bk{font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--blau);margin:0 0 8px;padding-bottom:5px;border-bottom:2px solid var(--linie);display:flex;align-items:center;gap:7px}
+  h2.bk .em{font-size:14px}
+  .block{margin-bottom:14px;break-inside:avoid}
+
+  /* leaks */
+  .leak{display:flex;gap:9px;font-size:12.5px;padding:5px 0;border-bottom:1px solid var(--linie)}
+  .leak:last-child{border-bottom:none}
+  .leak .n{font-family:var(--display);font-weight:900;font-size:14px;color:var(--rot);line-height:1.2;flex:none;width:14px}
+  .leak b{color:var(--blau)}
+  .leak code{font-family:var(--mono);font-size:11px;background:var(--rot-luft);color:var(--rot);padding:0 4px;border-radius:3px}
+
+  /* skeleton steps */
+  .step{display:flex;gap:8px;font-size:12.5px;padding:4px 0}
+  .step .sn{font-family:var(--display);font-weight:800;font-size:11px;color:var(--blau);background:var(--blau-luft);
+    width:19px;height:19px;border-radius:50%;display:grid;place-items:center;flex:none}
+  .step b{font-weight:700}
+  .step i{color:var(--weich);font-style:normal}
+
+  .phrases{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+  .ph{font-size:11.5px;background:var(--flaeche);border:1px solid var(--linie);padding:4px 9px;border-radius:99px}
+
+  .prep{columns:2;column-gap:16px;font-size:12px;line-height:1.7}
+  .prep span{display:block;break-inside:avoid}
+  .prep b{color:var(--blau)}
+
+  table.mini{width:100%;border-collapse:collapse;font-size:12px}
+  table.mini th{background:var(--blau-tief);color:#fff;font-family:var(--display);font-weight:700;font-size:10.5px;
+    text-transform:uppercase;letter-spacing:.03em;padding:5px 7px;text-align:left}
+  table.mini td{padding:4px 7px;border-top:1px solid var(--linie)}
+  table.mini em{font-style:normal;color:var(--rot);font-weight:700}
+  table.mini b{color:var(--blau);font-weight:700}
+
+  .tip{background:var(--gruen-luft);border-left:3px solid var(--gruen);border-radius:0 7px 7px 0;padding:9px 12px;font-size:12px;margin-top:4px}
+  .tip b{color:var(--gruen)}
+
+  /* per-section tactics */
+  .tactics{display:grid;gap:9px;margin-top:4px}
+  @media(min-width:560px){.tactics{grid-template-columns:repeat(2,1fr)}}
+  .tac{border:1px solid var(--linie);border-radius:8px;padding:9px 11px;background:var(--flaeche)}
+  .tac .th{font-family:var(--display);font-weight:800;font-size:12px;color:var(--blau);margin-bottom:2px}
+  .tac .tx{font-size:11.5px;color:var(--tinte)}
+
+  .check{list-style:none;font-size:12px;display:grid;gap:4px}
+  .check li{display:flex;gap:7px}.check li::before{content:"☐";color:var(--blau);flex:none}
+  .check b{color:var(--blau)}
+
+  /* ===== SHEET B — watchlist ===== */
+  .usehow{background:var(--blau-luft);border:1px solid #C8D4FB;border-radius:9px;padding:11px 14px;font-size:12.5px;margin-bottom:16px}
+  .usehow b{color:var(--blau-tief)}
+
+  .watch{display:grid;gap:7px;margin-bottom:6px}
+  .w{display:flex;align-items:center;gap:10px;background:var(--flaeche);border:1px solid var(--linie);border-radius:8px;
+    padding:9px 11px;break-inside:avoid}
+  .w .wn{font-family:var(--display);font-weight:900;font-size:12px;color:#fff;background:var(--blau);min-width:22px;height:22px;
+    border-radius:6px;display:grid;place-items:center;flex:none}
+  .w.t2 .wn{background:var(--weich)}.w.t3 .wn{background:var(--gruen)}
+  .w .wm{flex:1;min-width:0}
+  .w .wt{font-weight:600;font-size:13px;line-height:1.2}
+  .w .wt span{color:var(--weich);font-weight:400}
+  .w .wd{font-size:11.5px;color:var(--weich);margin-top:1px}
+  .yt{font-family:var(--display);font-weight:700;font-size:11.5px;text-decoration:none;white-space:nowrap;
+    color:#fff;background:var(--rot);padding:6px 11px;border-radius:7px;flex:none;display:inline-flex;align-items:center;gap:5px}
+  .yt::before{content:"▶";font-size:9px}
+  .yt:hover{background:#b32a15}
+  .pq{display:none;font-family:var(--mono);font-size:10px;color:var(--weich)}
+
+  .tier-lbl{font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--weich);margin:14px 0 7px;display:flex;align-items:center;gap:8px}
+  .tier-lbl::after{content:"";flex:1;height:1px;background:var(--linie)}
+  .tier-lbl.hot{color:var(--rot)}
+
+  .themes{display:grid;gap:6px}
+  @media(min-width:560px){.themes{grid-template-columns:1fr 1fr}}
+  .thm{display:flex;align-items:center;gap:8px;font-size:12.5px;background:var(--flaeche);border:1px solid var(--linie);
+    border-radius:7px;padding:6px 10px;break-inside:avoid}
+  .thm .tt{flex:1;font-weight:600}
+  .yt.s{background:var(--blau);padding:5px 9px;font-size:11px}.yt.s:hover{background:var(--blau-tief)}
+
+  .channels{display:grid;gap:6px}
+  @media(min-width:560px){.channels{grid-template-columns:1fr 1fr}}
+  .ch{display:flex;align-items:center;gap:9px;font-size:12px;background:var(--flaeche);border:1px solid var(--linie);
+    border-radius:7px;padding:7px 10px}
+  .ch .cm{flex:1}.ch .cn{font-weight:700}.ch .cd{font-size:11px;color:var(--weich)}
+
+  footer{text-align:center;color:var(--weich);font-size:11.5px;padding:8px 0 30px}
+
+  /* ============ PRINT ============ */
+  @media print{
+    @page{margin:11mm;}
+    body{background:#fff}
+    .toolbar,footer{display:none!important}
+    .wrap{max-width:none;padding:0}
+    .sheet{box-shadow:none;border:none;border-radius:0;margin:0;padding:0}
+    .sheet.b{break-before:page}
+    .sign{background:#fff;color:var(--blau-tief);border:2px solid var(--blau-tief);margin:0 0 12px;
+      -webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .sign .ic{background:var(--blau-tief);color:#fff}
+    .sign .sub{color:var(--weich)}
+    .mantra{background:#fff}
+    h2.bk,table.mini th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .yt{display:none}           /* hide buttons; show the query instead */
+    .pq{display:inline}
+    .w,.thm{padding:5px 8px}
+    body{font-size:11px}
+    .leak,.prep,.step,.check li{font-size:10.5px}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap row">
+    <a href="./" style="font-family:var(--display);font-weight:700;font-size:13px;color:var(--blau);text-decoration:none;white-space:nowrap">← Lern-Route</a>
+    <div class="ttl">B1 <span>Spickzettel</span></div>
+    <div class="sp"></div>
+    <span class="hint">2 Seiten · druckt sauber als PDF</span>
+    <button class="btn print" onclick="window.print()">Drucken / als PDF speichern</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ============ SHEET A — EXAM DAY ============ -->
+<div class="sheet a">
+  <div class="sign">
+    <span class="ic">SEITE 1</span>
+    <h1>Am Prüfungstag — ein Blick vor der Tür</h1>
+    <div class="sub">Goethe / telc B1<br>15.07.2026</div>
+  </div>
+
+  <div class="mantra">
+    <div class="ml">Im Raum immer denken</div>
+    <div class="mt"><b>Hilfsverb</b> nicht vergessen · Verb auf <b>Platz 2</b> · <b>Grund + Beispiel</b></div>
+  </div>
+
+  <div class="cols">
+    <!-- LEFT -->
+    <div>
+      <div class="block">
+        <h2 class="bk"><span class="em">🔴</span> Deine 4 Lecks — aufpassen</h2>
+        <div class="leak"><span class="n">1</span><div>Perfekt = <b>immer</b> 2 Verben. <code>„wir geblieben"</code> → <b>„wir sind geblieben"</b></div></div>
+        <div class="leak"><span class="n">2</span><div>Startwort? Verb sofort auf <b>Platz 2</b>. <code>„Manchmal es ist"</code> → <b>„Manchmal ist es"</b></div></div>
+        <div class="leak"><span class="n">3</span><div>Feste Präposition prüfen: interessieren <b>für</b>, freuen <b>auf</b>, teilnehmen <b>an</b></div></div>
+        <div class="leak"><span class="n">4</span><div>Relativpronomen = Genus + Kasus: der Film, <b>den</b>… / die Frau, <b>der</b>…</div></div>
+      </div>
+
+      <div class="block">
+        <h2 class="bk">Relativpronomen</h2>
+        <table class="mini">
+          <tr><th></th><th>der</th><th>die</th><th>das</th><th>Pl.</th></tr>
+          <tr><td>Nom</td><td>der</td><td>die</td><td>das</td><td>die</td></tr>
+          <tr><td>Akk</td><td><em>den</em></td><td>die</td><td>das</td><td>die</td></tr>
+          <tr><td>Dat</td><td><em>dem</em></td><td><em>der</em></td><td><em>dem</em></td><td><em>denen</em></td></tr>
+        </table>
+      </div>
+
+      <div class="block">
+        <h2 class="bk">Feste Präpositionen</h2>
+        <div class="prep">
+          <span>freuen <b>auf</b> / <b>über</b></span>
+          <span>interessieren <b>für</b></span>
+          <span>kümmern <b>um</b></span>
+          <span>denken <b>an</b></span>
+          <span>teilnehmen <b>an</b></span>
+          <span>warten <b>auf</b></span>
+          <span>verlassen <b>auf</b></span>
+          <span>verzichten <b>auf</b></span>
+          <span>ärgern <b>über</b></span>
+          <span>informieren <b>über</b></span>
+          <span>träumen <b>von</b></span>
+          <span>abhängen <b>von</b></span>
+          <span>stolz <b>auf</b></span>
+          <span>zufrieden <b>mit</b></span>
+          <span>abhängig <b>von</b></span>
+          <span>verantwortlich <b>für</b></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div>
+      <div class="block">
+        <h2 class="bk">🗣️ Präsentation — Skelett</h2>
+        <div class="step"><span class="sn">1</span><div><b>Einleitung:</b> <i>Ich möchte über … sprechen. Das ist wichtig, weil …</i></div></div>
+        <div class="step"><span class="sn">2</span><div><b>Meine Situation:</b> <i>In meinem Heimatland / In Deutschland ist es so, dass …</i></div></div>
+        <div class="step"><span class="sn">3</span><div><b>Vor/Nachteile:</b> <i>Einerseits …, andererseits …</i></div></div>
+        <div class="step"><span class="sn">4</span><div><b>Beispiel:</b> <i>Aus eigener Erfahrung … / Ein Beispiel ist …</i></div></div>
+        <div class="step"><span class="sn">5</span><div><b>Fazit:</b> <i>Zusammenfassend … Meiner Meinung nach …</i></div></div>
+        <div class="tip"><b>🎓 B2-Glanz:</b> 1× Passiv (<i>„Heute wird viel über … diskutiert"</i>) + 1× Konjunktiv II (<i>„Man könnte sagen, dass …"</i>).</div>
+      </div>
+
+      <div class="block">
+        <h2 class="bk">Rettungs-Phrasen</h2>
+        <div class="phrases">
+          <span class="ph">Meiner Meinung nach …</span>
+          <span class="ph">Einerseits …, andererseits …</span>
+          <span class="ph">Ein Vorteil/Nachteil ist, dass …</span>
+          <span class="ph">Zum Beispiel …</span>
+          <span class="ph">Das hängt davon ab, ob …</span>
+          <span class="ph">Zusammenfassend …</span>
+          <span class="ph">Wie wäre es, wenn wir …?</span>
+          <span class="ph">Da stimme ich zu / Da widerspreche ich</span>
+          <span class="ph">Moment, lassen Sie mich kurz überlegen …</span>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2 class="bk">✅ Schreiben — 60-Sek-Check</h2>
+        <ul class="check">
+          <li><b>Alle Aufgabenpunkte</b> abgedeckt?</li>
+          <li>Anrede + Gruß passend?</li>
+          <li>Jeder Perfektsatz hat ein <b>Hilfsverb</b>?</li>
+          <li>Verb nach Startwort auf <b>Platz 2</b>?</li>
+          <li>Verb im Nebensatz am <b>Ende</b>?</li>
+          <li>2+ Konnektoren · keine engl. Wörter?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" style="margin-top:6px">
+    <h2 class="bk">Taktik je Prüfungsteil</h2>
+    <div class="tactics">
+      <div class="tac"><div class="th">Lesen</div><div class="tx">Erst die Fragen lesen, dann den Text. Nie leer lassen — raten.</div></div>
+      <div class="tac"><div class="th">Hören</div><div class="tx">Stichwörter mitschreiben. Verpasst? Loslassen, weiterhören.</div></div>
+      <div class="tac"><div class="th">Schreiben</div><div class="tx">Aufgabenpunkte markieren → jeden abhaken. 2 Min Check am Ende.</div></div>
+      <div class="tac"><div class="th">Sprechen</div><div class="tx">Lieber <b>langsam & korrekt</b> als schnell & kaputt. Skelett nutzen.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SHEET B — COMMUTE WATCHLIST ============ -->
+<div class="sheet b">
+  <div class="sign">
+    <span class="ic">SEITE 2</span>
+    <h1>Für unterwegs — deine YouTube-Watchlist</h1>
+    <div class="sub">Tippen = Suche öffnet<br>5–10 Min pro Video</div>
+  </div>
+
+  <div class="usehow">
+    <b>So nutzt du tote Zeit (Pendeln, Schlange, Pause):</b> Tippe ein Thema an → ein kurzes Video schauen → danach <b>sofort 3 Sätze laut sagen</b>, die das Gelernte benutzen. Schauen allein bringt wenig; das laute Nachsprechen schließt deine Lecks. Wenig Zeit? <b>Tier 1 zuerst</b> — das sind genau deine Schwachstellen.
+  </div>
+
+  <div class="tier-lbl hot">Tier 1 · Deine 5 Lecks — zuerst schauen</div>
+  <div class="watch">
+    <div class="w"><span class="wn">1</span><div class="wm"><div class="wt">Perfekt: <span>haben oder sein?</span></div><div class="wd">Hilfsverb wählen — und nie weglassen. <span class="pq">› „Perfekt haben oder sein B1"</span></div></div><a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Perfekt+haben+oder+sein+B1+erkl%C3%A4rt">YouTube</a></div>
+    <div class="w"><span class="wn">2</span><div class="wm"><div class="wt">Satzstellung: <span>Verb auf Position 2</span></div><div class="wd">Inversion nach Startwort/Zeitangabe. <span class="pq">› „Satzstellung Verb Position 2"</span></div></div><a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Satzstellung+Deutsch+Verb+Position+2+Inversion">YouTube</a></div>
+    <div class="w"><span class="wn">3</span><div class="wm"><div class="wt">Verben mit <span>festen Präpositionen</span></div><div class="wd">interessieren für, freuen auf … <span class="pq">› „Verben mit Präpositionen B1 B2"</span></div></div><a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Verben+mit+Pr%C3%A4positionen+B1+B2">YouTube</a></div>
+    <div class="w"><span class="wn">4</span><div class="wm"><div class="wt">Relativsätze <span>& Relativpronomen</span></div><div class="wd">den/dem/der nach Kasus. <span class="pq">› „Relativsätze Relativpronomen B1"</span></div></div><a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Relativs%C3%A4tze+Relativpronomen+B1">YouTube</a></div>
+    <div class="w"><span class="wn">5</span><div class="wm"><div class="wt">Wechselpräpositionen <span>Dativ/Akkusativ</span></div><div class="wd">Wo? = Dativ / Wohin? = Akkusativ. <span class="pq">› „Wechselpräpositionen Dativ Akkusativ"</span></div></div><a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Wechselpr%C3%A4positionen+Dativ+Akkusativ+erkl%C3%A4rt">YouTube</a></div>
+  </div>
+
+  <div class="tier-lbl">Tier 2 · Festigen + B2-Glanz</div>
+  <div class="watch">
+    <div class="w t2"><span class="wn">6</span><div class="wm"><div class="wt">Konnektoren <span>(deshalb, trotzdem, weil/denn)</span></div><div class="wd">Sätze sauber verbinden. <span class="pq">› „Konnektoren Deutsch B1 B2"</span></div></div><a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Konnektoren+Deutsch+B1+B2+deshalb+trotzdem">YouTube</a></div>
+    <div class="w t2"><span class="wn">7</span><div class="wm"><div class="wt">Passiv <span>(Präsens & Präteritum)</span></div><div class="wd">wird gemacht / wurde gemacht. <span class="pq">› „Passiv Präsens Präteritum"</span></div></div><a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Passiv+Pr%C3%A4sens+Pr%C3%A4teritum+Deutsch">YouTube</a></div>
+    <div class="w t2"><span class="wn">8</span><div class="wm"><div class="wt">Konjunktiv II <span>(höflich: würde, wäre, könnte)</span></div><div class="wd">Für Bitten & Vorschläge. <span class="pq">› „Konjunktiv II würde wäre B1"</span></div></div><a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Konjunktiv+II+w%C3%BCrde+w%C3%A4re+B1">YouTube</a></div>
+    <div class="w t2"><span class="wn">9</span><div class="wm"><div class="wt">Adjektivendungen</div><div class="wd">ein guter Plan, der gute Plan … <span class="pq">› „Adjektivendungen Tabelle"</span></div></div><a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Adjektivendungen+Deutsch+Tabelle+B1">YouTube</a></div>
+    <div class="w t2"><span class="wn">10</span><div class="wm"><div class="wt">Nomen-Verb-Verbindungen <span>(B2)</span></div><div class="wd">eine Entscheidung treffen … <span class="pq">› „Nomen-Verb-Verbindungen B2"</span></div></div><a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Nomen-Verb-Verbindungen+B2">YouTube</a></div>
+  </div>
+
+  <div class="tier-lbl">Tier 3 · Prüfungsformat sehen + Immersion</div>
+  <div class="watch">
+    <div class="w t3"><span class="wn">11</span><div class="wm"><div class="wt">Mündliche Prüfung B1 <span>— echte Beispiele</span></div><div class="wd">Sehen, wie es im Raum abläuft. <span class="pq">› „telc / Goethe B1 mündliche Prüfung Beispiel"</span></div></div><a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=telc+B1+m%C3%BCndliche+Pr%C3%BCfung+Beispiel">YouTube</a></div>
+    <div class="w t3"><span class="wn">12</span><div class="wm"><div class="wt">Brief / E-Mail B1 <span>— Schreiben üben</span></div><div class="wd">Aufbau & Floskeln. <span class="pq">› „telc B1 Brief schreiben Beispiel"</span></div></div><a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=telc+B1+Brief+schreiben+Beispiel">YouTube</a></div>
+    <div class="w t3"><span class="wn">13</span><div class="wm"><div class="wt">Hörverstehen B1 <span>— Übungen</span></div><div class="wd">Ohr trainieren beim Pendeln. <span class="pq">› „Hörverstehen B1 Übung"</span></div></div><a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=H%C3%B6rverstehen+B1+%C3%9Cbung+mit+L%C3%B6sung">YouTube</a></div>
+    <div class="w t3"><span class="wn">14</span><div class="wm"><div class="wt">Easy German <span>— echtes Gespräch mit Untertiteln</span></div><div class="wd">Passiv hören, Wörter aufschnappen. <span class="pq">› „Easy German B1"</span></div></div><a class="yt" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Easy+German+B1">YouTube</a></div>
+  </div>
+
+  <div class="tier-lbl">Sprech-Themen · Wortschatz auffrischen</div>
+  <div class="themes">
+    <div class="thm"><span class="tt">Arbeit & Beruf</span><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Deutsch+Wortschatz+Arbeit+Beruf+B1">Suchen</a></div>
+    <div class="thm"><span class="tt">Umwelt & Klima</span><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Deutsch+Wortschatz+Umwelt+Klima+B1">Suchen</a></div>
+    <div class="thm"><span class="tt">Mobilität & Verkehr</span><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Deutsch+Wortschatz+Verkehr+Mobilit%C3%A4t+B1">Suchen</a></div>
+    <div class="thm"><span class="tt">Gesundheit</span><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Deutsch+Wortschatz+Gesundheit+B1">Suchen</a></div>
+    <div class="thm"><span class="tt">Medien & Internet</span><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Deutsch+Wortschatz+Medien+Internet+B1">Suchen</a></div>
+    <div class="thm"><span class="tt">Reisen & Urlaub</span><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Deutsch+Wortschatz+Reisen+Urlaub+B1">Suchen</a></div>
+    <div class="thm"><span class="tt">Wohnen</span><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Deutsch+Wortschatz+Wohnen+B1">Suchen</a></div>
+    <div class="thm"><span class="tt">Freizeit & Hobbys</span><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Deutsch+Wortschatz+Freizeit+Hobbys+B1">Suchen</a></div>
+    <div class="thm"><span class="tt">Technologie & KI</span><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Deutsch+Wortschatz+Technologie+B1">Suchen</a></div>
+    <div class="thm"><span class="tt">Konsum & Einkaufen</span><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Deutsch+Wortschatz+Einkaufen+Konsum+B1">Suchen</a></div>
+    <div class="thm"><span class="tt">Bildung & Lernen</span><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Deutsch+Wortschatz+Bildung+Lernen+B1">Suchen</a></div>
+    <div class="thm"><span class="tt">Familie & Freunde</span><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Deutsch+Wortschatz+Familie+Freunde+B1">Suchen</a></div>
+  </div>
+
+  <div class="tier-lbl">Verlässliche Kanäle (hier suchen)</div>
+  <div class="channels">
+    <div class="ch"><div class="cm"><div class="cn">Easy German</div><div class="cd">Echte Straßen-Gespräche, Untertitel — top fürs Pendeln</div></div><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Easy+German">Kanal</a></div>
+    <div class="ch"><div class="cm"><div class="cn">DW Learn German</div><div class="cd">Deutsche Welle — kostenlos, strukturiert, prüfungsnah</div></div><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=DW+Learn+German">Kanal</a></div>
+    <div class="ch"><div class="cm"><div class="cn">Lingoni GERMAN</div><div class="cd">Klare Grammatik-Reihen A1–C1</div></div><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=lingoni+GERMAN">Kanal</a></div>
+    <div class="ch"><div class="cm"><div class="cn">Deutsch mit Marija</div><div class="cd">B1/B2-Grammatik, sehr verständlich erklärt</div></div><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Deutsch+mit+Marija">Kanal</a></div>
+    <div class="ch"><div class="cm"><div class="cn">GermanPod101</div><div class="cd">Wortschatz & Hörtraining in kurzen Häppchen</div></div><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=GermanPod101">Kanal</a></div>
+    <div class="ch"><div class="cm"><div class="cn">Deutsch mit Benjamin</div><div class="cd">Grammatik-Drills, B1–C1</div></div><a class="yt s" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=Deutsch+mit+Benjamin">Kanal</a></div>
+  </div>
+</div>
+
+</div>
+
+<footer>Tippe ein Thema an → Video → 3 Sätze laut sagen. · Viel Erfolg, Rishabh 💪</footer>
+
+</body>
+</html>
